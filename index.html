@@ -8,7 +8,25 @@
   </head>
   <body>
     <h1>mi curso javascript</h1>
+
+    <p>Este es el primer párrafo.</p>
+    <p>Este es el segundo párrafo.</p>
+    <p>Este es el tercer párrafo.</p>
+
+    <!-- Botón para cambiar el color de los párrafos -->
+    <button onclick="cambiarColor()">Cambiar color a azul</button>
+
+
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
+
+    <script>
+      function cambiarColor() {
+          let parrafos = document.querySelectorAll("p");
+          parrafos.forEach(function(parrafo) {
+              parrafo.style.color = "blue";
+          });
+      }
+    </script>
   </body>
 </html>
