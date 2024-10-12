@@ -58,4 +58,4 @@ Este proyecto fue desarrollado como parte del curso "Desarrollo de Software" en 
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/matiasalmendros/TP-Js.git
+   git clone https://github.com/camilafabian/TP_js_ds
