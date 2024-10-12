@@ -8,15 +8,13 @@
   </head>
   <body>
     <h1>mi curso javascript</h1>
-
+    <!-- ejercicio 7.1 -->
     <p>Este es el primer párrafo.</p>
     <p>Este es el segundo párrafo.</p>
     <p>Este es el tercer párrafo.</p>
 
     <!-- Botón para cambiar el color de los párrafos -->
     <button onclick="cambiarColor()">Cambiar color a azul</button>
-
-
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
 
@@ -28,5 +26,123 @@
           });
       }
     </script>
+
+
+
+
+    <!-- ejercicio 7.2 -->
+      <div>
+        <h1>Ejercicio 2: Formulario con alerta</h1>
+        <form>
+            <label for="texto">Ingresa un texto:</label>
+            <input type="text" id="texto" placeholder="Escribe algo aquí...">
+            <button type="button" onclick="mostrarAlerta()">Mostrar Alerta</button>
+        </form>
+      </div>
+
+    <script>
+        function mostrarAlerta() {
+            let textoIngresado = document.getElementById("texto").value;
+            alert("Has ingresado: " + textoIngresado);
+        }
+    </script>
+
+
+
+
+
+  <!-- ejercicio 8.1 -->
+  <h1>Lista de Elementos</h1>
+  <ul id="miLista">
+      <li>Elemento 1</li>
+      <li>Elemento 2</li>
+      <li>Elemento 3</li>
+      <li>Elemento 4</li>
+      <li>Elemento 5</li>
+  </ul>
+
+  <script>
+      const listaElementos = document.querySelectorAll("#miLista li");
+      listaElementos.forEach(function(li) {
+          li.addEventListener("click", function() {
+              console.log(li.textContent);
+          });
+      });
+  </script>
+
+
+
+    <!-- ejercicio 8.2 -->
+    <h1>Ejercicio 2: Deshabilitar/Habilitar campo de texto</h1>
+
+    <label for="textoInput">Ingresa un texto:</label>
+    <input type="text" id="textoInput" placeholder="Escribe algo aquí...">
+
+    <br><br>
+
+    <button type="button" id="btnDeshabilitar">Deshabilitar campo</button>
+    <button type="button" id="btnHabilitar">Habilitar campo</button>
+
+    <script>
+        const inputTexto = document.getElementById('textoInput');
+        const btnDeshabilitar = document.getElementById('btnDeshabilitar');
+        const btnHabilitar = document.getElementById('btnHabilitar');
+        btnDeshabilitar.addEventListener('click', function() {
+            inputTexto.disabled = true;
+        });
+        btnHabilitar.addEventListener('click', function() {
+            inputTexto.disabled = false;
+        });
+    </script>
+
+
+
+<!-- 
+    ejercicio 9 -->
+    <h1>Guardar Correo en LocalStorage</h1>
+
+    <form id="formulario">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" placeholder="Ingresa tu correo" required>
+        <button type="submit">Guardar correo</button>
+    </form>
+    <div id="correoGuardado"></div>
+    <button id="eliminarCorreo" style="display: none;">Eliminar correo</button>
+
+    <script>
+        const formulario = document.getElementById('formulario');
+        const correoGuardadoDiv = document.getElementById('correoGuardado');
+        const eliminarCorreoBtn = document.getElementById('eliminarCorreo');
+
+        function mostrarCorreoSiExiste() {
+            const correoGuardado = localStorage.getItem('correo');
+            if (correoGuardado) {
+                correoGuardadoDiv.innerHTML = `Correo guardado: <strong>${correoGuardado}</strong>`;
+                eliminarCorreoBtn.style.display = 'inline';
+            } else {
+                correoGuardadoDiv.innerHTML = '';
+                eliminarCorreoBtn.style.display = 'none';
+            }
+        }
+
+        mostrarCorreoSiExiste();
+
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evitar que el formulario se envíe
+            const email = document.getElementById('email').value;
+
+            localStorage.setItem('correo', email);
+            mostrarCorreoSiExiste();
+            formulario.reset();
+        });
+
+        eliminarCorreoBtn.addEventListener('click', function() {
+            localStorage.removeItem('correo');
+            mostrarCorreoSiExiste();
+        });
+    </script>
+
+
+
   </body>
 </html>
